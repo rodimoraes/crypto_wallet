@@ -1,8 +1,16 @@
 <h1>Seja Bem-Vindo!</h1>
-<p>Dev: Rodrigo Moraes</p>
+<%= render  "header"%>
+<%= image_tag "https://www.buybitcoinworldwide.com/img/goodicons/wallet.png", size:"150x150"%>
 
-<p>Data: <%= Date.today %></p> 
+
+<p><strong>Data:</strong> <%= data_br(Date.today) %></p> 
 
 <ul>
     <li><%=link_to "Cadastro de Moedas", coins_path%></li>
 </ul>
+
+<p>Você está em ambiente de: <strong><%= ambiente?(Rails.env)%></strong></p>
+
+<p> Preencha esses campos passando parametros pela url</p>
+<p>Desenvolvedor: <%= @dev %></p>
+<p>Curso: <%= @curso %></p>
