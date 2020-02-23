@@ -10,22 +10,10 @@ namespace :dev do
     end
 
     if Rails.env.development?
-      show_spinner("Apagando Banco de Dados...") do 
-        %x(rails db:drop)
-      end
-      
-      show_spinner("Criando Banco de Dados...") do
-        %x(rails db:create)
-      end
-
-      show_spinner("Migrando o Banco de Dados...") do
-        %x(rails db:migrate)
-      end
-
-      show_spinner("Populando o Banco de Dados...") do
-      %x(rails db:seed)
-    end
-
+      show_spinner("Apagando Banco de Dados..."){%x(rails db:drop)}
+      show_spinner("Criando Banco de Dados..."){%x(rails db:create)}
+      show_spinner("Migrando o Banco de Dados..."){%x(rails db:migrate)}
+      show_spinner("Populando o Banco de Dados..."){%x(rails db:seed)} 
     else
       puts "Você precisa estar em ambiente de desenvolvimento"
     end
