@@ -2,29 +2,31 @@ namespace :dev do
   desc "Configura a base para começar a utilizar a aplicação"
   task setup: :environment do
     if Rails.env.development?
-    spinner = TTY::Spinner.new("[:spinner] Deletando Banco de Dados...")
-    spinner.auto_spin
-    %x(rails db:drop)
-    spinner.success('(Concluído com sucesso!)')
+      show_spinner("Apagando Banco de Dados...") do 
+        %x(rails db:drop)
+      end
+      
+      show_spinner("Criando Banco de Dados...") do
+        %x(rails db:create)
+      end
 
-    spinner = TTY::Spinner.new("[:spinner] Criando Banco de Dados...")
-    spinner.auto_spin
-    %x(rails db:create)
-    spinner.success('(Concluído com sucesso!)')
+      show_spinner("Migrando o Banco de Dados...") do
+        %x(rails db:migrate)
+      end
 
-
-    spinner = TTY::Spinner.new("[:spinner] Migrando Banco de Dados...")
-    spinner.auto_spin
-    %x(rails db:migrate)
-    spinner.success('(Concluído com sucesso!)')
-
-
-    spinner = TTY::Spinner.new("[:spinner] Populando Banco de Dados...")
-    spinner.auto_spin
-    %x(rails db:seed)
-    spinner.success('(Concluído com sucesso!)')
+      show_spinner("Populando o Banco de Dados...")
+      %x(rails db:seed)
+      spinner.success('(Concluído com sucesso!)')
     else
       puts "Você precisa estar em ambiente de desenvolvimento"
     end
+
+    def show_spinner(msg_inicio,msg_final = "Concluído com sucesso!")
+      spinner = TTY::Spinner.new("[:spinner] #{msg_inicio}")
+      spinner.auto_spin
+      yield
+      spinner.success("(#{msg_final})")
+    end
+
   end
 end
