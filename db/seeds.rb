@@ -7,7 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-puts "Cadastrando moedas..."
+
+# Use o dev:setup (lá esta fazendo tudo!)
+=begin
+spinner = TTY::Spinner.new("[:spinner] Cadastrando moedas...")
+
 
 coins =  [
             {
@@ -36,6 +40,18 @@ coins =  [
                 acronym: "LTE",
                 url_image: "https://www.pngjoy.com/pngm/841/9936079_litecoin-logo-ltc-400-litecoin-logo-transparent-png.png",
                 dollar_value: 56.21
+            },
+            {
+                description: "Iota",
+                acronym: "Iota",
+                url_image: "https://http2.mlstatic.com/iota-miota-D_NQ_NP_745195-MLB27906607491_082018-F.jpg",
+                dollar_value: 0.27
+            },
+            {
+                description: "ZCash",
+                acronym: "ZEC",
+                url_image: "https://z.cash/wp-content/uploads/2019/03/zcash-icon-fullcolor.png",
+                dollar_value: 63
             }
         ]
 
@@ -43,4 +59,6 @@ coins.each do |coin|
     Coin.find_or_create_by!(coin)
 end
 
-puts "Moedas cadastradas com sucesso!"
+spinner.auto_spin
+spinner.success("(Sucesso!)")
+=end

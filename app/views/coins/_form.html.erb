@@ -4,7 +4,7 @@
       <h2><%= pluralize(coin.errors.count, "error") %> prohibited this coin from being saved:</h2>
 
       <ul>
-      <% coin.errors.full_messages.each do |message| %>
+        <% coin.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

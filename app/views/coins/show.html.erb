@@ -27,5 +27,14 @@
   <%= @coin.dollar_value %>
 </p>
 
+<p>
+  <strong>Mining Type:</strong>
+  <%if @coin.mining_type%>
+    <%= @coin.mining_type.description%>
+  <%else%>
+    <i>not registered</i>  
+  <%end%>
+</p>
+
 <%= link_to 'Editar', edit_coin_path(@coin) %> |
 <%= link_to 'Voltar', coins_path %>
