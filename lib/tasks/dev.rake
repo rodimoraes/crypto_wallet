@@ -6,8 +6,8 @@ namespace :dev do
       show_spinner("Apagando Banco de Dados..."){%x(rails db:drop)}
       show_spinner("Criando Banco de Dados..."){%x(rails db:create)}
       show_spinner("Migrando o Banco de Dados..."){%x(rails db:migrate)}
-      %x(rails dev:add_coins)
       %x(rails dev:add_mining_types)
+      %x(rails dev:add_coins)
     else
       puts "Você precisa estar em ambiente de desenvolvimento"
     end
@@ -21,40 +21,46 @@ namespace :dev do
             description: "Bitcoin",
             acronym: "BTC",
             url_image: "https://imagepng.org/wp-content/uploads/2017/06/moeda-bitcoin-coin.png",
-            dollar_value: 8576.0
+            dollar_value: 8576.0,
+            mining_type: MiningType.find_by(acronym: 'Pow')#find_by procura por essa sigla
           },
 
           {
             description: "Ethereum",
             acronym: "ETH",
             url_image: "https://img2.gratispng.com/20180330/wae/kisspng-ethereum-bitcoin-cryptocurrency-logo-tether-bitcoin-5abdfe01b6f4b4.2459439115224007697494.jpg",
-            dollar_value: 167.34
+            dollar_value: 167.34,
+            mining_type: MiningType.all.sample
           },
 
           {
             description: "Dash",
             acronym: "DASH",
             url_image: "http://cryptowiki.net/images/5/55/Dash.png",
-            dollar_value: 111.71
+            dollar_value: 111.71,
+            mining_type: MiningType.all.sample
           },
 
           {
             description: "Litecoin",
             acronym: "LTE",
             url_image: "https://www.pngjoy.com/pngm/841/9936079_litecoin-logo-ltc-400-litecoin-logo-transparent-png.png",
-            dollar_value: 56.21
+            dollar_value: 56.21,
+            mining_type: MiningType.all.sample
           },
           {
             description: "Iota",
             acronym: "Iota",
             url_image: "https://http2.mlstatic.com/iota-miota-D_NQ_NP_745195-MLB27906607491_082018-F.jpg",
-            dollar_value: 0.27
+            dollar_value: 0.27,
+            mining_type: MiningType.all.sample
           },
           {
             description: "ZCash",
             acronym: "ZEC",
             url_image: "https://z.cash/wp-content/uploads/2019/03/zcash-icon-fullcolor.png",
-            dollar_value: 63
+            dollar_value: 63,
+            mining_type: MiningType.all.sample
           }
         ]
         coins.each do |coin|
