@@ -1,0 +1,11 @@
+'pt-BR':
+  hello: "Olá Mundo!"
+  links:
+    back: "Voltar"
+    show: "Mostrar"
+    edit: "Editar"
+    delete: "Apagar"
+    New Mining Type: "Novo Tipo de Mineiração"
+  message:
+    are you sure: "Você tem certeza?"
+    delete: "Você tem certeza que deseja apagar?"

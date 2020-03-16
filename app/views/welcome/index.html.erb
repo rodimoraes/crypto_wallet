@@ -1,9 +1,17 @@
 <h1>Seja Bem-Vindo!</h1>
+
 <%= render  "header"%>
 <%= image_tag "https://www.buybitcoinworldwide.com/img/goodicons/wallet.png", size:"150x150"%>
 
+<!-- Devolve a data traduzida para o local predefinido -->
+<p><strong>Data:</strong> <%= I18n.l(Date.today)%></p>
 
-<p><strong>Data:</strong> <%= data_br(Date.today) %></p> 
+<!-- chama o metodo locale -->
+<p>Idioma: <strong><%=locale%></strong></p>
+
+<!-- traduz a chave hello -->
+<p><font color=red><%=t('hello')%></font></p>
+
 
 <ul>
 	<li><%=link_to "Moedas", coins_path%></li>
@@ -13,7 +21,6 @@
 </ul>
 
 <p>Você está em ambiente de: <strong><%= ambiente?(Rails.env)%></strong></p>
-
 <p> Preencha esses campos passando parametros pela url</p>
 <p>Desenvolvedor: <%= @dev %></p>
 <p>Curso: <%= @curso %></p>
