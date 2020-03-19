@@ -3,10 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
-
+#gems adicionadas
 gem 'rails-i18n', '~> 5.1' #gem de locale do rails
 gem 'pry-rails' #melhorar a interface do IRB
 gem 'tty-spinner' #deixar mais bonito os loadings dos rakes
+
+#gem padrões
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
