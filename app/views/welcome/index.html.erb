@@ -1,33 +1,12 @@
-<h1>Seja Bem-Vindo!</h1>
-<script>
-$.notify("Bem Vindo!","success");
-</script>
-<%= render "header"%>
 
-<%=link_to 'Português', root_path(locale: 'pt-BR')%> |
-<%=link_to 'English',root_path(locale: :en)%>
-<br>
-
-<%= image_tag "https://www.buybitcoinworldwide.com/img/goodicons/wallet.png", size:"150x150"%>
-
-<!-- Devolve a data traduzida para o local predefinido -->
-<p><strong>Data:</strong> <%= I18n.l(Date.today)%></p>
-
-<!-- chama o metodo locale -->
-<p>Idioma: <strong><%=t('actual_locale')%></strong></p>
-
-<!-- traduz a chave hello -->
-<p><font color=red><%=t('hello')%></font></p>
+<div class="jumbotron">
+  <h1 class="display-4">Seja Bem-Vindo!</h1>
+  <%= image_tag "https://www.buybitcoinworldwide.com/img/goodicons/wallet.png", size:"150x150"%>
+  <p class="lead">Esse é o App Crypto Wallet. Sua Carteira digital!</p>
+  <hr class="my-4">
+  <p>Começe escolhendo uma das opções abaixo:</p>
+	<%=link_to "Moedas", coins_path, class:"btn btn-primary btn-lg", role:"button"%></li>
+	<%=link_to "Mineração", mining_types_path,class:"btn btn-primary btn-lg", role:"button"%></li>
+</div>
 
 
-<ul>
-	<li><%=link_to "Moedas", coins_path%></li>
-</ul>
-<ul>
-	<li><%=link_to "Mineração", mining_types_path%></li>
-</ul>
-
-<p>Você está em ambiente de: <strong><%= ambiente?(Rails.env)%></strong></p>
-<p> Preencha esses campos passando parametros pela url</p>
-<p>Desenvolvedor: <%= @dev %></p>
-<p>Curso: <%= @curso %></p>
