@@ -1,6 +1,11 @@
                                                 
 <h1>Show Coin</h1>
-<p id="notice"><%= notice %></p>
+
+<script>
+  $.notify("<%=notice%>", "success");
+</script>
+
+<!--<p id="notice"><%= notice %></p>-->
 <p>
   <strong><%=Coin.human_attribute_name(:id)%></strong>
   <%= @coin.id%>
